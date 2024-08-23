@@ -1,16 +1,14 @@
 import {
-  clusterApiUrl,
   Connection,
-  Keypair,
   LAMPORTS_PER_SOL,
   PublicKey,
+  clusterApiUrl,
 } from "@solana/web3.js";
 
+const wallet_address = "FkiHc9dvQGtdJg4eDh3z6zrakRBkYADYVr4vgzqMe954";
 const connection = new Connection(clusterApiUrl("devnet"));
-const account = new PublicKey("FkiHc9dvQGtdJg4eDh3z6zrakRBkYADYVr4vgzqMe954");
-const balance = await connection.getBalance(account);
+const address = new PublicKey(wallet_address);
+const balance = await connection.getBalance(address);
 const balanceInSol = balance / LAMPORTS_PER_SOL;
 
-console.log(
-  `Congrats! You are connected! \n\nAccount: ${account} \nBalance:${balanceInSol} sol`
-);
+console.log(`Balance: ${balanceInSol} sol`);
